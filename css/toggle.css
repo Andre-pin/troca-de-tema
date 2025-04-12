@@ -1,0 +1,51 @@
+#theme-toggle {
+    opacity: 0;
+    position: absolute;
+}
+
+.theme-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: var(--toggle-bg);
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--toggle-border);
+    transition: background-color var(--transition-time) ease, border-color var(--transition-time) ease;
+}
+
+.toggle-label {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: var(--toggle-circle);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px var(--shadow);
+    transition: transform var(--transition-time) cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color var(--transition-time) ease;
+    animation: slide-off var(--transition-time) cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+#theme-toggle:checked + .theme-toggle-container {
+    background-color: var(--toggle-active);
+    border-color: var(--toggle-active);
+}
+
+#theme-toggle:checked + .theme-toggle-container .toggle-label {
+    animation: slide-on var(--transition-time) cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+/* Keyframes para a animação do "slide" */
+@keyframes slide-on {
+    from { transform: translateX(0); }
+    to { transform: translateX(30px); }
+}
+
+@keyframes slide-off {
+    from { transform: translateX(30px); }
+    to { transform: translateX(0); }
+}
